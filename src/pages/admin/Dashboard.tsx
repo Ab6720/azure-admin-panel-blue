@@ -27,10 +27,7 @@ const Dashboard = () => {
       <div className="space-y-6 fade-in">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Dashboard</h1>
-          <Button className="hover-scale">
-            <Download className="h-4 w-4 mr-2" />
-            Export Report
-          </Button>
+          
         </div>
         
         {/* Stat Cards */}

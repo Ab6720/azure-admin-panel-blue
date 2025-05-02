@@ -9,10 +9,10 @@ const School = () => {
   
   // Example school data
   const schools = [
-    { id: 1, name: "Lincoln High School", location: "New York", students: 1245 },
-    { id: 2, name: "Washington Elementary", location: "Boston", students: 850 },
-    { id: 3, name: "Jefferson Middle School", location: "Chicago", students: 920 },
-    { id: 4, name: "Roosevelt Academy", location: "Los Angeles", students: 1100 },
+    { id: 1, name: "school 1", location: "xx", students: 1245 },
+    { id: 2, name: "school 2", location: "xx", students: 850 },
+    { id: 3, name: "school 3", location: "xx", students: 920 },
+    { id: 4, name: "school 4", location: "xx", students: 1100 },
   ];
 
   const filteredSchools = schools.filter(school => 
@@ -24,10 +24,7 @@ const School = () => {
       <div className="space-y-6 fade-in">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">School Management</h1>
-          <Button className="hover-scale">
-            <Plus className="h-4 w-4 mr-2" />
-            Add School
-          </Button>
+          
         </div>
         
         <div className="admin-card">
@@ -64,6 +61,7 @@ const School = () => {
                     <td className="p-4 text-right">
                       <Button variant="ghost" size="sm" className="hover-scale">View</Button>
                       <Button variant="ghost" size="sm" className="hover-scale">Edit</Button>
+                      <Button variant="ghost" size="sm" className="hover-scale">Delete</Button>
                     </td>
                   </tr>
                 ))}

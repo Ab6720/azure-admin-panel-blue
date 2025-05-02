@@ -12,12 +12,10 @@ const Profile = () => {
           <div className="flex flex-col md:flex-row gap-6">
             <div className="flex flex-col items-center gap-4 slide-in stagger-1">
               <Avatar className="h-24 w-24 hover-scale">
-                <AvatarImage src="https://github.com/shadcn.png" alt="Admin" />
+                <AvatarImage src="" alt="Admin" />
                 <AvatarFallback>AD</AvatarFallback>
               </Avatar>
-              <Button className="w-full hover-scale" variant="outline">
-                Change Photo
-              </Button>
+             
             </div>
             
             <div className="flex-1 space-y-4 slide-in stagger-2">

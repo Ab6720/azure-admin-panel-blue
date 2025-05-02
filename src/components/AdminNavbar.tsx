@@ -20,10 +20,10 @@ const AdminNavbar = () => {
 
   const navItems = [
     { name: "Dashboard", icon: <LayoutDashboard className="h-5 w-5" />, path: "/admin/dashboard" },
-    { name: "School", icon: <School className="h-5 w-5" />, path: "/admin/school" },
-    { name: "Student", icon: <User className="h-5 w-5" />, path: "/admin/student" },
-    { name: "Provider", icon: <Briefcase className="h-5 w-5" />, path: "/admin/provider" },
-    { name: "Subadmin", icon: <Users className="h-5 w-5" />, path: "/admin/subadmin" },
+    { name: "Schools", icon: <School className="h-5 w-5" />, path: "/admin/school" },
+    { name: "Students", icon: <User className="h-5 w-5" />, path: "/admin/student" },
+    { name: "Providers", icon: <Briefcase className="h-5 w-5" />, path: "/admin/provider" },
+    { name: "Subadmins", icon: <Users className="h-5 w-5" />, path: "/admin/subadmin" },
   ];
 
   const toggleMobileMenu = () => {
@@ -94,7 +94,7 @@ const AdminNavbar = () => {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@admin" />
+                    <AvatarImage src="" alt="@admin" />
                     <AvatarFallback>AD</AvatarFallback>
                   </Avatar>
                 </Button>
