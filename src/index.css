@@ -61,6 +61,10 @@
   animation: fadeIn 0.5s ease-out;
 }
 
+.admin-stats-card {
+  @apply p-5 bg-white rounded-lg border border-border shadow-sm hover:shadow-md transition-all space-y-3;
+}
+
 /* Animation utility classes */
 .fade-in { animation: fadeIn 0.5s ease-out; }
 .slide-in { animation: slideInRight 0.5s ease-out; }

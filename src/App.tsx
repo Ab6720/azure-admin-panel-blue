@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/admin/Dashboard";
 import School from "./pages/admin/School";
 import Student from "./pages/admin/Student";
 import Provider from "./pages/admin/Provider";
@@ -20,8 +21,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/admin/school" replace />} />
-          <Route path="/admin" element={<Navigate to="/admin/school" replace />} />
+          <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/school" element={<School />} />
           <Route path="/admin/student" element={<Student />} />
           <Route path="/admin/provider" element={<Provider />} />

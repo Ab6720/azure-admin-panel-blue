@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { School, User, Briefcase, Users, Bell, Menu, X } from "lucide-react";
+import { School, User, Briefcase, Users, Bell, Menu, X, LayoutDashboard } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const AdminNavbar = () => {
@@ -19,6 +19,7 @@ const AdminNavbar = () => {
   const isMobile = useIsMobile();
 
   const navItems = [
+    { name: "Dashboard", icon: <LayoutDashboard className="h-5 w-5" />, path: "/admin/dashboard" },
     { name: "School", icon: <School className="h-5 w-5" />, path: "/admin/school" },
     { name: "Student", icon: <User className="h-5 w-5" />, path: "/admin/student" },
     { name: "Provider", icon: <Briefcase className="h-5 w-5" />, path: "/admin/provider" },
