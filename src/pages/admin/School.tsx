@@ -4,9 +4,9 @@ import AdminLayout from "@/components/AdminLayout";
 const School = () => {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="space-y-6 fade-in">
         <h1 className="text-2xl font-bold">School Management</h1>
-        <div className="admin-card">
+        <div className="admin-card hover-scale">
           <h2 className="text-lg font-semibold mb-4">School List</h2>
           <p className="text-muted-foreground">
             Manage all schools in the system. Add, edit, or remove school details.

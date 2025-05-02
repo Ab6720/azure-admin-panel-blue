@@ -6,21 +6,21 @@ import { Button } from "@/components/ui/button";
 const Profile = () => {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="space-y-6 fade-in">
         <h1 className="text-2xl font-bold">Profile</h1>
         <div className="admin-card">
           <div className="flex flex-col md:flex-row gap-6">
-            <div className="flex flex-col items-center gap-4">
-              <Avatar className="h-24 w-24">
+            <div className="flex flex-col items-center gap-4 slide-in stagger-1">
+              <Avatar className="h-24 w-24 hover-scale">
                 <AvatarImage src="https://github.com/shadcn.png" alt="Admin" />
                 <AvatarFallback>AD</AvatarFallback>
               </Avatar>
-              <Button className="w-full" variant="outline">
+              <Button className="w-full hover-scale" variant="outline">
                 Change Photo
               </Button>
             </div>
             
-            <div className="flex-1 space-y-4">
+            <div className="flex-1 space-y-4 slide-in stagger-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Full Name</label>
@@ -41,28 +41,28 @@ const Profile = () => {
               </div>
               
               <div className="pt-4">
-                <Button variant="default">Edit Profile</Button>
+                <Button variant="default" className="hover-scale">Edit Profile</Button>
               </div>
             </div>
           </div>
         </div>
         
-        <div className="admin-card">
+        <div className="admin-card slide-in stagger-3">
           <h2 className="text-lg font-semibold mb-4">Security Settings</h2>
           <div className="space-y-4">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center hover:bg-secondary/30 p-2 rounded-md transition-colors">
               <div>
                 <h3 className="font-medium">Password</h3>
                 <p className="text-sm text-muted-foreground">Last changed 30 days ago</p>
               </div>
-              <Button variant="outline">Change Password</Button>
+              <Button variant="outline" className="hover-scale">Change Password</Button>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center hover:bg-secondary/30 p-2 rounded-md transition-colors">
               <div>
                 <h3 className="font-medium">Two-Factor Authentication</h3>
                 <p className="text-sm text-muted-foreground">Enhance your account security</p>
               </div>
-              <Button variant="outline">Enable</Button>
+              <Button variant="outline" className="hover-scale">Enable</Button>
             </div>
           </div>
         </div>

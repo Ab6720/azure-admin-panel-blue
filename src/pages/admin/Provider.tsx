@@ -4,9 +4,9 @@ import AdminLayout from "@/components/AdminLayout";
 const Provider = () => {
   return (
     <AdminLayout>
-      <div className="space-y-6">
+      <div className="space-y-6 fade-in">
         <h1 className="text-2xl font-bold">Provider Management</h1>
-        <div className="admin-card">
+        <div className="admin-card hover-scale">
           <h2 className="text-lg font-semibold mb-4">Provider List</h2>
           <p className="text-muted-foreground">
             Manage all providers in the system. Review credentials, monitor services, and manage contracts.

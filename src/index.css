@@ -77,6 +77,50 @@
   }
 }
 
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .admin-nav-item {
   @apply px-4 py-2 rounded-md transition-all hover:bg-primary/10 hover:text-primary font-medium;
 }
@@ -91,8 +135,57 @@
 
 .admin-card {
   @apply bg-white rounded-lg shadow-sm border border-border p-5 hover:shadow-md transition-all;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .admin-stats-card {
   @apply admin-card flex flex-col gap-2;
+  animation: slideInRight 0.5s ease-out;
 }
+
+/* Animation utility classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.hover-scale {
+  @apply transition-transform duration-200;
+}
+.hover-scale:hover {
+  @apply transform scale-105;
+}
+
+.hover-bounce {
+  @apply transition-all duration-200;
+}
+.hover-bounce:hover {
+  animation: bounce 0.6s ease infinite;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
