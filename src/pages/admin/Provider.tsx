@@ -22,7 +22,7 @@ const Teacher = () => {
     <AdminLayout>
       <div className="space-y-6 fade-in">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Provider</h1>
+          <h1 className="text-2xl font-bold">Provider Management</h1>
           
         </div>
 
