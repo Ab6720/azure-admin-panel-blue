@@ -1,29 +1,75 @@
 import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
-import { Plus, Search } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Search, Eye, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
 
 const Student = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Example student data
-  const students = [
+  const [students, setStudents] = useState([
     { id: 1, name: "Alice Johnson", grade: "10", school: "School 1" },
     { id: 2, name: "Bob Smith", grade: "9", school: "School 2" },
     { id: 3, name: "Charlie Davis", grade: "11", school: "School 3" },
     { id: 4, name: "Diana Lee", grade: "12", school: "School 1" },
-  ];
+  ]);
 
-  const filteredStudents = students.filter(student =>
+  const [selectedStudent, setSelectedStudent] = useState<any>(null);
+  const [actionType, setActionType] = useState<"view" | "edit" | "delete" | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    grade: "",
+    school: "",
+  });
+
+  const filteredStudents = students.filter((student) =>
     student.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const openDialog = (student: any, type: "view" | "edit" | "delete") => {
+    setSelectedStudent(student);
+    setActionType(type);
+    setIsDialogOpen(true);
+    setFormData({
+      name: student.name,
+      grade: student.grade,
+      school: student.school,
+    });
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedStudent(null);
+    setActionType(null);
+  };
+
+  const handleEditStudent = () => {
+    setStudents((prev) =>
+      prev.map((s) =>
+        s.id === selectedStudent.id
+          ? {
+              ...s,
+              name: formData.name,
+              grade: formData.grade,
+              school: formData.school,
+            }
+          : s
+      )
+    );
+    closeDialog();
+  };
+
+  const handleDeleteStudent = () => {
+    setStudents((prev) => prev.filter((s) => s.id !== selectedStudent.id));
+    closeDialog();
+  };
 
   return (
     <AdminLayout>
       <div className="space-y-6 fade-in">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Student Management</h1>
-          
         </div>
 
         <div className="admin-card">
@@ -57,10 +103,31 @@ const Student = () => {
                     <td className="p-4 font-medium">{student.name}</td>
                     <td className="p-4">{student.grade}</td>
                     <td className="p-4">{student.school}</td>
-                    <td className="p-4 text-right">
-                      <Button variant="ghost" size="sm" className="hover-scale">View</Button>
-                      <Button variant="ghost" size="sm" className="hover-scale">Edit</Button>
-                      <Button variant="ghost" size="sm" className="hover-scale">Delete</Button>
+                    <td className="p-4 text-right space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="hover-scale"
+                        onClick={() => openDialog(student, "view")}
+                      >
+                        <Eye className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="hover-scale"
+                        onClick={() => openDialog(student, "edit")}
+                      >
+                        <Pencil className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="hover-scale text-red-600"
+                        onClick={() => openDialog(student, "delete")}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -75,9 +142,72 @@ const Student = () => {
           )}
         </div>
       </div>
+
+      {/* Dialogs */}
+      <Dialog open={isDialogOpen} onOpenChange={closeDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {actionType === "view" && "View Student"}
+              {actionType === "edit" && "Edit Student"}
+              {actionType === "delete" && "Delete Student"}
+            </DialogTitle>
+          </DialogHeader>
+
+          {selectedStudent && actionType === "view" && (
+            <div className="space-y-2">
+              <p><strong>Name:</strong> {selectedStudent.name}</p>
+              <p><strong>Grade:</strong> {selectedStudent.grade}</p>
+              <p><strong>School:</strong> {selectedStudent.school}</p>
+            </div>
+          )}
+
+          {selectedStudent && actionType === "edit" && (
+            <div className="space-y-4">
+              <input
+                type="text"
+                className="w-full border px-3 py-2 rounded-md"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
+              <input
+                type="text"
+                className="w-full border px-3 py-2 rounded-md"
+                value={formData.grade}
+                onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
+              />
+              <input
+                type="text"
+                className="w-full border px-3 py-2 rounded-md"
+                value={formData.school}
+                onChange={(e) => setFormData({ ...formData, school: e.target.value })}
+              />
+              <Button className="w-full" onClick={handleEditStudent}>
+                Save Changes
+              </Button>
+            </div>
+          )}
+
+          {selectedStudent && actionType === "delete" && (
+            <div>
+              <p>
+                Are you sure you want to delete{" "}
+                <strong>{selectedStudent.name}</strong>?
+              </p>
+              <div className="flex justify-end gap-2 mt-4">
+                <Button variant="outline" onClick={closeDialog}>
+                  Cancel
+                </Button>
+                <Button variant="destructive" onClick={handleDeleteStudent}>
+                  Confirm
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </AdminLayout>
   );
 };
 
 export default Student;
-
