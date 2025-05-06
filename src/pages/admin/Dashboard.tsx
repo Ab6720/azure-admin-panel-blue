@@ -3,8 +3,9 @@ import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StatCard from "@/components/StatCard";
-import { Download, Search, School, User, Briefcase, Users } from "lucide-react";
+import { Download, Search, School, User, Briefcase, Users, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,11 +27,61 @@ const Dashboard = () => {
     <AdminLayout>
       <div className="space-y-6 fade-in">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
-          
+          <h1 className="text-2xl font-bold text-[#4979a0]">Dashboard</h1>
         </div>
         
-        {/* Stat Cards */}
+        {/* New Card Style */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link to="/admin/school" className="block">
+            <div className="dashboard-card hover-scale">
+              <h3 className="dashboard-card-title">Schools</h3>
+              <div className="dashboard-card-icon">
+                <School className="h-8 w-8" />
+              </div>
+              <p className="dashboard-card-action">
+                View Details
+              </p>
+            </div>
+          </Link>
+          
+          <Link to="/admin/student" className="block">
+            <div className="dashboard-card hover-scale">
+              <h3 className="dashboard-card-title">Students</h3>
+              <div className="dashboard-card-icon">
+                <User className="h-8 w-8" />
+              </div>
+              <p className="dashboard-card-action">
+                View Details
+              </p>
+            </div>
+          </Link>
+          
+          <Link to="/admin/provider" className="block">
+            <div className="dashboard-card hover-scale">
+              <h3 className="dashboard-card-title">Providers</h3>
+              <div className="dashboard-card-icon">
+                <Briefcase className="h-8 w-8" />
+              </div>
+              <p className="dashboard-card-action">
+                View Details
+              </p>
+            </div>
+          </Link>
+          
+          <Link to="/admin/subadmin" className="block">
+            <div className="dashboard-card hover-scale">
+              <h3 className="dashboard-card-title">Subadmins</h3>
+              <div className="dashboard-card-icon">
+                <Users className="h-8 w-8" />
+              </div>
+              <p className="dashboard-card-action">
+                View Details
+              </p>
+            </div>
+          </Link>
+        </div>
+        
+        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard 
             title="Schools" 
@@ -65,13 +116,13 @@ const Dashboard = () => {
         {/* Recent Activity */}
         <div className="admin-card">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Recent Activity</h2>
+            <h2 className="text-lg font-semibold text-[#4979a0]">Recent Activity</h2>
             <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-[#4979a0]" />
               <input 
                 type="text" 
                 placeholder="Search activities..." 
-                className="pl-8 h-9 w-[200px] rounded-md border border-input bg-white px-3 text-sm"
+                className="pl-8 h-9 w-[200px] rounded-md border border-input bg-white px-3 text-sm text-[#4979a0]"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -82,15 +133,15 @@ const Dashboard = () => {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-secondary/50">
-                  <th className="h-10 px-4 text-left font-medium">Activity</th>
-                  <th className="h-10 px-4 text-right font-medium">Time</th>
+                  <th className="h-10 px-4 text-left font-medium text-[#4979a0]">Activity</th>
+                  <th className="h-10 px-4 text-right font-medium text-[#4979a0]">Time</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredActivities.map((activity) => (
                   <tr key={activity.id} className="border-b hover:bg-secondary/30 transition-colors">
-                    <td className="p-4 font-medium">{activity.action}</td>
-                    <td className="p-4 text-right text-muted-foreground">{activity.time}</td>
+                    <td className="p-4 font-medium text-[#4979a0]">{activity.action}</td>
+                    <td className="p-4 text-right text-[#4979a0]">{activity.time}</td>
                   </tr>
                 ))}
               </tbody>
@@ -98,7 +149,7 @@ const Dashboard = () => {
           </div>
           
           {filteredActivities.length === 0 && (
-            <div className="text-center py-4 text-muted-foreground">
+            <div className="text-center py-4 text-[#4979a0]">
               No activities found. Try a different search term.
             </div>
           )}

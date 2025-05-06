@@ -37,7 +37,7 @@ const AdminNavbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/admin" className="flex items-center">
-              <span className="text-2xl font-bold text-primary">Admin</span>
+              <span className="text-2xl font-bold text-[#4979a0]">Admin</span>
             </Link>
           </div>
 
@@ -47,7 +47,7 @@ const AdminNavbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="admin-nav-item"
+                className="admin-nav-item text-[#4979a0]"
               >
                 <span className="admin-nav-link">
                   {item.icon}
@@ -63,8 +63,8 @@ const AdminNavbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="relative">
-                  <Bell className="h-5 w-5" />
-                  <span className="absolute top-0 right-0 h-2 w-2 bg-primary rounded-full"></span>
+                  <Bell className="h-5 w-5 text-[#4979a0]" />
+                  <span className="absolute top-0 right-0 h-2 w-2 bg-[#4979a0] rounded-full"></span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -72,19 +72,19 @@ const AdminNavbar = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <div className="flex flex-col">
-                    <span className="font-medium">New student registered</span>
-                    <span className="text-sm text-muted-foreground">2 minutes ago</span>
+                    <span className="font-medium text-[#4979a0]">New student registered</span>
+                    <span className="text-sm text-[#4979a0]/70">2 minutes ago</span>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <div className="flex flex-col">
-                    <span className="font-medium">Provider update</span>
-                    <span className="text-sm text-muted-foreground">1 hour ago</span>
+                    <span className="font-medium text-[#4979a0]">Provider update</span>
+                    <span className="text-sm text-[#4979a0]/70">1 hour ago</span>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="cursor-pointer">
-                  View all notifications
+                  <span className="text-[#4979a0]">View all notifications</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -102,21 +102,21 @@ const AdminNavbar = () => {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">Admin User</p>
-                    <p className="text-xs leading-none text-muted-foreground">
+                    <p className="text-sm font-medium leading-none text-[#4979a0]">Admin User</p>
+                    <p className="text-xs leading-none text-[#4979a0]/70">
                       admin@example.com
                     </p>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link to="/admin/profile" className="flex w-full">
+                  <Link to="/admin/profile" className="flex w-full text-[#4979a0]">
                     Profile
                   </Link>
                 </DropdownMenuItem>
                
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Log out</DropdownMenuItem>
+                <DropdownMenuItem className="text-[#4979a0]">Log out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -128,9 +128,9 @@ const AdminNavbar = () => {
               onClick={toggleMobileMenu}
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-[#4979a0]" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 text-[#4979a0]" />
               )}
             </Button>
           </div>
@@ -143,7 +143,7 @@ const AdminNavbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="flex items-center px-4 py-3 hover:bg-gray-100"
+                className="flex items-center px-4 py-3 hover:bg-gray-100 text-[#4979a0]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="mr-3">{item.icon}</span>

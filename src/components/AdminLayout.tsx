@@ -15,7 +15,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-secondary">
+    <div className="min-h-screen bg-secondary text-[#4979a0]">
       <AdminNavbar />
       <main 
         className={`container mx-auto px-4 py-6 transition-all duration-300 ${

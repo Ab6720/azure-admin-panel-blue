@@ -17,13 +17,13 @@ const StatCard = ({ title, value, icon, trend, className }: StatCardProps) => {
   return (
     <div className={cn("admin-stats-card", className)}>
       <div className="flex items-center justify-between">
-        <h3 className="text-muted-foreground font-medium">{title}</h3>
-        <div className="p-2 rounded-md bg-primary/10 text-primary">
+        <h3 className="text-[#4979a0] font-medium">{title}</h3>
+        <div className="p-2 rounded-md bg-primary/10 text-[#4979a0]">
           {icon}
         </div>
       </div>
       <div className="flex items-end justify-between">
-        <div className="text-2xl font-bold">{value}</div>
+        <div className="text-2xl font-bold text-[#4979a0]">{value}</div>
         {trend && (
           <div className={`flex items-center text-sm ${trend.isPositive ? 'text-green-500' : 'text-red-500'}`}>
             <span>{trend.isPositive ? '↑' : '↓'}</span>
