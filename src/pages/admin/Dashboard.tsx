@@ -3,7 +3,7 @@ import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import StatCard from "@/components/StatCard";
-import { Download, Search, School, User, Briefcase, Users, ChevronRight } from "lucide-react";
+import { School, User, Briefcase, Users, ChevronRight, Search, Building, Home } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -23,6 +23,14 @@ const Dashboard = () => {
     activity.action.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Define card data with counts
+  const cardData = [
+    { title: "Schools", count: 42, icon: <Building className="h-8 w-8" />, path: "/admin/school" },
+    { title: "Students", count: 2856, icon: <User className="h-8 w-8" />, path: "/admin/student" },
+    { title: "Providers", count: 64, icon: <Home className="h-8 w-8" />, path: "/admin/provider" },
+    { title: "Subadmins", count: 16, icon: <Users className="h-8 w-8" />, path: "/admin/subadmin" },
+  ];
+
   return (
     <AdminLayout>
       <div className="space-y-6 fade-in">
@@ -30,55 +38,21 @@ const Dashboard = () => {
           <h1 className="text-2xl font-bold text-[#4979a0]">Dashboard</h1>
         </div>
         
-        {/* New Card Style */}
+        {/* New Card Style with counts instead of View Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Link to="/admin/school" className="block">
-            <div className="dashboard-card hover-scale">
-              <h3 className="dashboard-card-title">Schools</h3>
-              <div className="dashboard-card-icon">
-                <School className="h-8 w-8" />
+          {cardData.map((card, index) => (
+            <Link to={card.path} className="block" key={index}>
+              <div className="dashboard-card hover-scale">
+                <h3 className="dashboard-card-title">{card.title}</h3>
+                <div className="dashboard-card-icon">
+                  {card.icon}
+                </div>
+                <p className="dashboard-card-count">
+                  {card.count.toLocaleString()}
+                </p>
               </div>
-              <p className="dashboard-card-action">
-                View Details
-              </p>
-            </div>
-          </Link>
-          
-          <Link to="/admin/student" className="block">
-            <div className="dashboard-card hover-scale">
-              <h3 className="dashboard-card-title">Students</h3>
-              <div className="dashboard-card-icon">
-                <User className="h-8 w-8" />
-              </div>
-              <p className="dashboard-card-action">
-                View Details
-              </p>
-            </div>
-          </Link>
-          
-          <Link to="/admin/provider" className="block">
-            <div className="dashboard-card hover-scale">
-              <h3 className="dashboard-card-title">Providers</h3>
-              <div className="dashboard-card-icon">
-                <Briefcase className="h-8 w-8" />
-              </div>
-              <p className="dashboard-card-action">
-                View Details
-              </p>
-            </div>
-          </Link>
-          
-          <Link to="/admin/subadmin" className="block">
-            <div className="dashboard-card hover-scale">
-              <h3 className="dashboard-card-title">Subadmins</h3>
-              <div className="dashboard-card-icon">
-                <Users className="h-8 w-8" />
-              </div>
-              <p className="dashboard-card-action">
-                View Details
-              </p>
-            </div>
-          </Link>
+            </Link>
+          ))}
         </div>
         
         {/* Stats Cards */}
@@ -86,7 +60,7 @@ const Dashboard = () => {
           <StatCard 
             title="Schools" 
             value="42" 
-            icon={<School className="h-5 w-5" />} 
+            icon={<Building className="h-5 w-5" />} 
             trend={{ value: 12, isPositive: true }}
             className="admin-card hover-scale"
           />
@@ -100,7 +74,7 @@ const Dashboard = () => {
           <StatCard 
             title="Providers" 
             value="64" 
-            icon={<Briefcase className="h-5 w-5" />} 
+            icon={<Home className="h-5 w-5" />} 
             trend={{ value: 5, isPositive: true }}
             className="admin-card hover-scale"
           />

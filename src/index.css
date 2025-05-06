@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,8 +75,9 @@
   @apply bg-white p-4 rounded-md inline-flex items-center justify-center mb-4 text-[#1e4e70] border border-[#1e4e70];
 }
 
-.dashboard-card-action {
-  @apply text-[#1e4e70] font-medium text-lg mt-4 hover:underline;
+/* Replacing action with count */
+.dashboard-card-count {
+  @apply text-[#1e4e70] font-bold text-2xl mt-4;
 }
 
 .dashboard-card::after {
