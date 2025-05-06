@@ -2,7 +2,7 @@
 import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import StatCard from "@/components/StatCard";
+import AdminLayout from "@/components/AdminLayout";
 import { School, User, Briefcase, Users, ChevronRight, Search, Building, Home } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
