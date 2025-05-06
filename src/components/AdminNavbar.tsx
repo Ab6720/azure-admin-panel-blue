@@ -3,16 +3,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu";
 import { School, User, Briefcase, Users, Bell, Menu, X, LayoutDashboard } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 
 const AdminNavbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

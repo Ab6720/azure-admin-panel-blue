@@ -58,32 +58,40 @@ const Dashboard = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard 
+<<<<<<< Updated upstream
             title="Schools" 
             value="42" 
             icon={<Building className="h-5 w-5" />} 
             trend={{ value: 12, isPositive: true }}
             className="admin-card hover-scale"
+=======
+            title="Total Students" 
+            icon={<User className="h-5 w-5 text-blue-500" />} 
+            value="1,234" 
+>>>>>>> Stashed changes
           />
           <StatCard 
-            title="Students" 
-            value="2,856" 
-            icon={<User className="h-5 w-5" />} 
-            trend={{ value: 8, isPositive: true }}
-            className="admin-card hover-scale"
+            title="Total Schools" 
+            icon={<School className="h-5 w-5 text-green-500" />} 
+            value="56" 
           />
           <StatCard 
+<<<<<<< Updated upstream
             title="Providers" 
             value="64" 
             icon={<Home className="h-5 w-5" />} 
             trend={{ value: 5, isPositive: true }}
             className="admin-card hover-scale"
+=======
+            title="Total Providers" 
+            icon={<Briefcase className="h-5 w-5 text-orange-500" />} 
+            value="12" 
+>>>>>>> Stashed changes
           />
           <StatCard 
-            title="Subadmins" 
-            value="16" 
-            icon={<Users className="h-5 w-5" />} 
-            trend={{ value: 2, isPositive: false }}
-            className="admin-card hover-scale"
+            title="Total Subadmins" 
+            icon={<Users className="h-5 w-5 text-purple-500" />} 
+            value="8" 
           />
         </div>
         
