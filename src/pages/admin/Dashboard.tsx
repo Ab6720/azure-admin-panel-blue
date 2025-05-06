@@ -56,30 +56,9 @@ const Dashboard = () => {
         
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard 
-            title="Schools" 
-            value="42" 
-            icon={<Building className="h-5 w-5" />} 
-            trend={{ value: 12, isPositive: true }}
-            className="admin-card hover-scale"
-          />
-          <StatCard 
-            title="Total Schools" 
-            icon={<School className="h-5 w-5 text-green-500" />} 
-            value="56" 
-          />
-          <StatCard 
-            title="Providers" 
-            value="64" 
-            icon={<Home className="h-5 w-5" />} 
-            trend={{ value: 5, isPositive: true }}
-            className="admin-card hover-scale"
-          />
-          <StatCard 
-            title="Total Subadmins" 
-            icon={<Users className="h-5 w-5 text-purple-500" />} 
-            value="8" 
-          />
+         
+          
+          
         </div>
         
         {/* Recent Activity */}
