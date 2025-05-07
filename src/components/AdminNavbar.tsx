@@ -2,11 +2,24 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu";
-import {Bell,Menu,X,} from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Bell, Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faSchool,faUserGraduate,faChalkboardUser,faHouse,faUserTie,} from "@fortawesome/free-solid-svg-icons";
+import {
+  faSchool,
+  faUserGraduate,
+  faChalkboardUser,
+  faHouse,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
 import logo from "@/components/assets/image.png";
 
 const AdminNavbar = () => {
@@ -16,27 +29,27 @@ const AdminNavbar = () => {
   const navItems = [
     {
       name: "Dashboard",
-      icon: <FontAwesomeIcon icon={faHouse} style={{ color: "#4979a0" }} />,
+      icon: <FontAwesomeIcon icon={faHouse} style={{ color: "#1e4d6c" }} />,
       path: "/admin/dashboard",
     },
     {
       name: "Schools",
-      icon: <FontAwesomeIcon icon={faSchool} style={{ color: "#4979a0" }} />,
+      icon: <FontAwesomeIcon icon={faSchool} style={{ color: "#1e4d6c" }} />,
       path: "/admin/school",
     },
     {
       name: "Students",
-      icon: <FontAwesomeIcon icon={faUserGraduate} style={{ color: "#4979a0" }} />,
+      icon: <FontAwesomeIcon icon={faUserGraduate} style={{ color: "#1e4d6c" }} />,
       path: "/admin/student",
     },
     {
       name: "Providers",
-      icon: <FontAwesomeIcon icon={faChalkboardUser} style={{ color: "#4979a0" }} />,
+      icon: <FontAwesomeIcon icon={faChalkboardUser} style={{ color:"#1e4d6c" }} />,
       path: "/admin/provider",
     },
     {
       name: "Subadmins",
-      icon: <FontAwesomeIcon icon={faUserTie} style={{ color: "#4979a0" }} />,
+      icon: <FontAwesomeIcon icon={faUserTie} style={{ color: "#1e4d6c" }} />,
       path: "/admin/subadmin",
     },
   ];
@@ -53,7 +66,6 @@ const AdminNavbar = () => {
           <div className="flex-shrink-0">
             <Link to="/admin" className="flex items-center space-x-2">
               <img src={logo} alt="Logo" className="h-14 w-auto" />
-              
             </Link>
           </div>
 
@@ -86,21 +98,21 @@ const AdminNavbar = () => {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-[#4979a0] hover:text-white cursor-pointer">
                   <div className="flex flex-col">
-                    <span className="font-medium text-[#4979a0]">New student registered</span>
-                    <span className="text-sm text-[#4979a0]/70">2 minutes ago</span>
+                    <span className="font-medium">New student registered</span>
+                    <span className="text-sm">2 minutes ago</span>
                   </div>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-[#4979a0] hover:text-white cursor-pointer">
                   <div className="flex flex-col">
-                    <span className="font-medium text-[#4979a0]">Provider update</span>
-                    <span className="text-sm text-[#4979a0]/70">1 hour ago</span>
+                    <span className="font-medium">Provider update</span>
+                    <span className="text-sm">1 hour ago</span>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer">
-                  <span className="text-[#4979a0]">View all notifications</span>
+                <DropdownMenuItem className="cursor-pointer hover:bg-[#4979a0] hover:text-white">
+                  <span>View all notifications</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -118,20 +130,24 @@ const AdminNavbar = () => {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none text-[#4979a0]">Admin User</p>
+                    <p className="text-sm font-medium leading-none text-[#4979a0]">
+                      Admin User
+                    </p>
                     <p className="text-xs leading-none text-[#4979a0]/70">
                       admin@example.com
                     </p>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Link to="/admin/profile" className="flex w-full text-[#4979a0]">
+                <DropdownMenuItem className="hover:bg-[#4979a0] hover:text-white">
+                  <Link to="/admin/profile" className="flex w-full">
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-[#4979a0]">Log out</DropdownMenuItem>
+                <DropdownMenuItem className="hover:bg-[#4979a0] hover:text-white">
+                  Log out
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
