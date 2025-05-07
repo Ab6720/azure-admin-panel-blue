@@ -1,25 +1,44 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuSeparator,DropdownMenuTrigger,} from "@/components/ui/dropdown-menu";
-import { School, User, Briefcase, Users, Bell, Menu, X, LayoutDashboard } from "lucide-react";
+import {Bell,Menu,X,} from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faSchool,faUserGraduate,faChalkboardUser,faHouse,faUserTie,} from "@fortawesome/free-solid-svg-icons";
+import logo from "@/components/assets/image.png";
 
 const AdminNavbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
 
   const navItems = [
-    { name: "Dashboard", icon: <LayoutDashboard className="h-5 w-5" />, path: "/admin/dashboard" },
-    { name: "Schools", icon: <School className="h-5 w-5" />, path: "/admin/school" },
-    { name: "Students", icon: <User className="h-5 w-5" />, path: "/admin/student" },
-    { name: "Providers", icon: <Briefcase className="h-5 w-5" />, path: "/admin/provider" },
-    { name: "Subadmins", icon: <Users className="h-5 w-5" />, path: "/admin/subadmin" },
+    {
+      name: "Dashboard",
+      icon: <FontAwesomeIcon icon={faHouse} style={{ color: "#4979a0" }} />,
+      path: "/admin/dashboard",
+    },
+    {
+      name: "Schools",
+      icon: <FontAwesomeIcon icon={faSchool} style={{ color: "#4979a0" }} />,
+      path: "/admin/school",
+    },
+    {
+      name: "Students",
+      icon: <FontAwesomeIcon icon={faUserGraduate} style={{ color: "#4979a0" }} />,
+      path: "/admin/student",
+    },
+    {
+      name: "Providers",
+      icon: <FontAwesomeIcon icon={faChalkboardUser} style={{ color: "#4979a0" }} />,
+      path: "/admin/provider",
+    },
+    {
+      name: "Subadmins",
+      icon: <FontAwesomeIcon icon={faUserTie} style={{ color: "#4979a0" }} />,
+      path: "/admin/subadmin",
+    },
   ];
 
   const toggleMobileMenu = () => {
@@ -30,10 +49,11 @@ const AdminNavbar = () => {
     <header className="bg-white border-b border-border sticky top-0 z-40">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo Section */}
           <div className="flex-shrink-0">
-            <Link to="/admin" className="flex items-center">
-              <span className="text-2xl font-bold text-[#4979a0]">Admin</span>
+            <Link to="/admin" className="flex items-center space-x-2">
+              <img src={logo} alt="Logo" className="h-14 w-auto" />
+              
             </Link>
           </div>
 
@@ -45,7 +65,7 @@ const AdminNavbar = () => {
                 to={item.path}
                 className="admin-nav-item text-[#4979a0]"
               >
-                <span className="admin-nav-link">
+                <span className="admin-nav-link flex items-center space-x-1">
                   {item.icon}
                   <span>{item.name}</span>
                 </span>
@@ -53,7 +73,7 @@ const AdminNavbar = () => {
             ))}
           </nav>
 
-          {/* Right side icons */}
+          {/* Right Side Controls */}
           <div className="flex items-center gap-4">
             {/* Notifications */}
             <DropdownMenu>
@@ -85,7 +105,7 @@ const AdminNavbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* User menu */}
+            {/* User Avatar */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -110,13 +130,12 @@ const AdminNavbar = () => {
                     Profile
                   </Link>
                 </DropdownMenuItem>
-               
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="text-[#4979a0]">Log out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Mobile menu button */}
+            {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
               size="icon"

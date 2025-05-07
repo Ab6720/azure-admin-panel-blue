@@ -5,6 +5,8 @@ import StatCard from "@/components/StatCard";
 import { School, User, Briefcase, Users, ChevronRight, Search, Building, Home } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSchool,faUserGraduate,faChalkboardUser,faHouse,faUserTie} from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,10 +26,22 @@ const Dashboard = () => {
 
   // Define card data with counts
   const cardData = [
-    { title: "Schools", count: 42, icon: <Building className="h-8 w-8" />, path: "/admin/school" },
-    { title: "Students", count: 2856, icon: <User className="h-8 w-8" />, path: "/admin/student" },
-    { title: "Providers", count: 64, icon: <Home className="h-8 w-8" />, path: "/admin/provider" },
-    { title: "Subadmins", count: 16, icon: <Users className="h-8 w-8" />, path: "/admin/subadmin" },
+    { title: "Schools", 
+      count: 42, 
+      icon: <FontAwesomeIcon icon={faSchool} className="h-8 w-8" style={{ color: "#4979a0" }} />,
+      path: "/admin/school" },
+    { title: "Students", 
+      count: 2856, 
+      icon: <FontAwesomeIcon icon={faUserGraduate} className="h-8 w-8" style={{ color: "#4979a0" }} />, 
+      path: "/admin/student" },
+    { title: "Providers", 
+      count: 64, 
+      icon: <FontAwesomeIcon icon={faChalkboardUser} className="h-8 w-8" style={{ color: "#4979a0" }} />,
+      path: "/admin/provider" },
+    { title: "Subadmins", 
+      count: 16, 
+      icon: <FontAwesomeIcon icon={faUserTie} className="h-8 w-8" style={{ color: "#4979a0" }} />,
+      path: "/admin/subadmin" },
   ];
 
   return (
