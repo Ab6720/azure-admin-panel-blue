@@ -15,6 +15,7 @@ const Subadmin = () => {
     { id: 1, name: "SubAD1", email: "XXXX@gmail.com", role: "xx" },
     { id: 2, name: "SubAD2", email: "XXXX@gmail.com", role: "xx" },
     { id: 3, name: "SubAD3", email: "XXXX@gmail.com", role: "xx" },
+    { id: 4, name: "SubAD4", email: "xxxx@gmail.com ", role: "xx" },
   ]);
 
   const [newSubadmin, setNewSubadmin] = useState({ name: "", email: "", role: "" });
