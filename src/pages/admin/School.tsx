@@ -1,6 +1,12 @@
 import AdminLayout from "@/components/AdminLayout";
 import { Button } from "@/components/ui/button";
-import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogTrigger,} from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Plus, Search, Eye, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
 
@@ -9,25 +15,37 @@ const School = () => {
   const [selectedSchool, setSelectedSchool] = useState<any>(null);
   const [actionType, setActionType] = useState<"view" | "edit" | "delete" | null>(null);
 
-  const schools = [
+  const [schools, setSchools] = useState([
     { id: 1, name: "School 1", location: "City A", students: 1245 },
     { id: 2, name: "School 2", location: "City B", students: 850 },
     { id: 3, name: "School 3", location: "City C", students: 920 },
     { id: 4, name: "School 4", location: "City D", students: 1100 },
-  ];
+  ]);
 
   const filteredSchools = schools.filter((school) =>
     school.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const openDialog = (school: any, type: "view" | "edit" | "delete") => {
-    setSelectedSchool(school);
+    setSelectedSchool({ ...school });
     setActionType(type);
   };
 
   const closeDialog = () => {
     setSelectedSchool(null);
     setActionType(null);
+  };
+
+  const handleSave = () => {
+    setSchools((prev) =>
+      prev.map((s) => (s.id === selectedSchool.id ? selectedSchool : s))
+    );
+    closeDialog();
+  };
+
+  const handleDelete = () => {
+    setSchools((prev) => prev.filter((s) => s.id !== selectedSchool.id));
+    closeDialog();
   };
 
   return (
@@ -114,19 +132,30 @@ const School = () => {
                               <input
                                 type="text"
                                 className="w-full border px-3 py-2 rounded-md"
-                                defaultValue={selectedSchool.name}
+                                value={selectedSchool.name}
+                                onChange={(e) =>
+                                  setSelectedSchool({ ...selectedSchool, name: e.target.value })
+                                }
                               />
                               <input
                                 type="text"
                                 className="w-full border px-3 py-2 rounded-md"
-                                defaultValue={selectedSchool.location}
+                                value={selectedSchool.location}
+                                onChange={(e) =>
+                                  setSelectedSchool({ ...selectedSchool, location: e.target.value })
+                                }
                               />
                               <input
                                 type="number"
                                 className="w-full border px-3 py-2 rounded-md"
-                                defaultValue={selectedSchool.students}
+                                value={selectedSchool.students}
+                                onChange={(e) =>
+                                  setSelectedSchool({ ...selectedSchool, students: Number(e.target.value) })
+                                }
                               />
-                              <Button className="w-full">Save Changes</Button>
+                              <Button className="w-full" onClick={handleSave}>
+                                Save Changes
+                              </Button>
                             </div>
                           </DialogContent>
                         )}
@@ -148,12 +177,16 @@ const School = () => {
                             <DialogHeader>
                               <DialogTitle>Delete School</DialogTitle>
                             </DialogHeader>
-                            <p>Are you sure you want to delete <strong>{selectedSchool.name}</strong>?</p>
+                            <p>
+                              Are you sure you want to delete <strong>{selectedSchool.name}</strong>?
+                            </p>
                             <div className="flex justify-end gap-2 mt-4">
                               <Button variant="outline" onClick={closeDialog}>
                                 Cancel
                               </Button>
-                              <Button variant="destructive">Confirm</Button>
+                              <Button variant="destructive" onClick={handleDelete}>
+                                Confirm
+                              </Button>
                             </div>
                           </DialogContent>
                         )}

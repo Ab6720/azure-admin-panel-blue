@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { toast } from "@/components/ui/use-toast";
 
 const Subadmin = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,11 +16,10 @@ const Subadmin = () => {
     { id: 1, name: "SubAD1", email: "XXXX@gmail.com", role: "xx" },
     { id: 2, name: "SubAD2", email: "XXXX@gmail.com", role: "xx" },
     { id: 3, name: "SubAD3", email: "XXXX@gmail.com", role: "xx" },
-    { id: 4, name: "SubAD4", email: "xxxx@gmail.com ", role: "xx" },
+    { id: 4, name: "SubAD4", email: "xxxx@gmail.com", role: "xx" },
   ]);
 
   const [newSubadmin, setNewSubadmin] = useState({ name: "", email: "", role: "" });
-
   const [selectedSubadmin, setSelectedSubadmin] = useState<any>(null);
   const [actionType, setActionType] = useState<"view" | "edit" | "delete" | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -47,12 +47,26 @@ const Subadmin = () => {
   };
 
   const handleAddSubadmin = () => {
-    if (newSubadmin.name && newSubadmin.email && newSubadmin.role) {
-      const newId = Math.max(...subadmins.map((s) => s.id)) + 1;
-      setSubadmins([...subadmins, { ...newSubadmin, id: newId }]);
-      setNewSubadmin({ name: "", email: "", role: "" });
-      setIsAddDialogOpen(false);
+    if (!newSubadmin.name || !newSubadmin.email || !newSubadmin.role) {
+      toast({
+        title: "Validation Error",
+        description: "All fields are required to add a subadmin.",
+        variant: "destructive",
+        duration: 3000,
+      });
+      return;
     }
+
+    const newId = Math.max(...subadmins.map((s) => s.id)) + 1;
+    setSubadmins([...subadmins, { ...newSubadmin, id: newId }]);
+    toast({
+      title: "Subadmin Added",
+      description: `${newSubadmin.name} has been added successfully.`,
+      duration: 3000,
+    });
+
+    setNewSubadmin({ name: "", email: "", role: "" });
+    setIsAddDialogOpen(false);
   };
 
   const handleEditSubadmin = () => {
@@ -61,11 +75,22 @@ const Subadmin = () => {
         s.id === selectedSubadmin.id ? { ...s, ...newSubadmin } : s
       )
     );
+    toast({
+      title: "Subadmin Updated",
+      description: `${newSubadmin.name}'s details were updated successfully.`,
+      duration: 3000,
+    });
     closeDialog();
   };
 
   const handleDeleteSubadmin = () => {
     setSubadmins((prev) => prev.filter((s) => s.id !== selectedSubadmin.id));
+    toast({
+      title: "Subadmin Deleted",
+      description: `${selectedSubadmin.name} was deleted successfully.`,
+      variant: "destructive",
+      duration: 3000,
+    });
     closeDialog();
   };
 
@@ -74,15 +99,14 @@ const Subadmin = () => {
       <div className="space-y-6 fade-in">
         <div className="flex justify-between items-center flex-wrap gap-2">
           <h1 className="text-2xl font-bold">Subadmin Management</h1>
-
-          <Button className="hover-scale" onClick={() => setIsAddDialogOpen(true)}>
+          <Button onClick={() => setIsAddDialogOpen(true)} className="hover-scale">
             <Plus className="h-4 w-4 mr-2" />
             Add Subadmin
           </Button>
         </div>
 
         <div className="admin-card">
-          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div className="flex items-center justify-between gap-2 mb-4">
             <h2 className="text-lg font-semibold">Subadmin List</h2>
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -137,7 +161,7 @@ const Subadmin = () => {
         </div>
       </div>
 
-      {/* Add Subadmin Dialog */}
+      {/* Add Dialog */}
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
         <DialogContent>
           <DialogHeader>
